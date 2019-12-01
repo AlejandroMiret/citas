@@ -31,6 +31,20 @@
                             <br>
                             {!! Form::select('paciente_id', $pacientes, $cita->paciente_id, ['class' => 'form-control']) !!}
                         </div>
+                        <div class="form-group">
+                            {!!Form::label('location_id', 'Location') !!}
+                            <br>
+                            {!! Form::select('location_id', $locations, $cita->location_id, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('duration', 'Fecha y hora de finalización de la cita') !!}
+
+
+                            <input type="datetime-local" id="duration" name="duration" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+
+
+                        </div>
+
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}

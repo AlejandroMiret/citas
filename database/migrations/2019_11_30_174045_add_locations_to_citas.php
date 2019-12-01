@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicosTable extends Migration
+class AddLocationsToCitas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateMedicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
-            $table->string('especialidad');
-            $table->timestamps();
+        Schema::table('citas', function (Blueprint $table) {
+
+            $table->unsignedInteger('location_id');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateMedicosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('medicos');
+        //
     }
 }

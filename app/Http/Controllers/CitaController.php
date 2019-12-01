@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
+use App\Location;
+
 
 
 class CitaController extends Controller
@@ -40,8 +42,10 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
+        $locations = Location::all()->pluck('full_name','id');
 
-        return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes]);
+
+        return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'locations'=>$locations]);
     }
 
     /**
@@ -55,8 +59,9 @@ class CitaController extends Controller
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
+            'location_id' => 'required|exists:locations,id',
             'fecha_hora' => 'required|date|after:now',
-
+            'duration' => 'required|date|after:fecha_hora'
         ]);
 
         $cita = new Cita($request->all());
@@ -94,8 +99,10 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
+        $locations = Location::all()->pluck('full_name','id');
 
-        return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes]);
+
+        return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes, 'locations'=>$locations]);
     }
 
     /**
@@ -110,8 +117,9 @@ class CitaController extends Controller
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
+            'location_id' => 'required|exists:locations,id',
             'fecha_hora' => 'required|date|after:now',
-
+            'duration' => 'required|date|after:fecha_hora'
         ]);
         $cita = Cita::find($id);
         $cita->fill($request->all());
