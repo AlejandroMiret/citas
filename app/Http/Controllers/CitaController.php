@@ -31,6 +31,13 @@ class CitaController extends Controller
         return view('citas/index',['citas'=>$citas]);
     }
 
+    public function citasPasadas()
+    {
+        $citas = Cita::all();
+
+        return view('citas/citasPasadas',['citas'=>$citas]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

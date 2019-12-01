@@ -14,6 +14,7 @@
                         {!! Form::close() !!}
 
                         <br><br>
+                        {{-- Aquí se añadería el botón para ver citas pasadas, pero me da error con la ruta si lo pongo--}}
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Fecha</th>
