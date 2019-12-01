@@ -39,7 +39,7 @@
                             {!! Form::label('duration', 'Fecha y hora de finalización de la cita') !!}
 
 
-                            <input type="datetime-local" id="duration" name="duration" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                            <input type="datetime-local" id="duration" name="duration" class="form-control" value="{{Carbon\Carbon::now()->addMinutes(15)->format('Y-m-d\Th:i')}}" />
 
 
                         </div>
