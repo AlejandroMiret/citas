@@ -17,7 +17,7 @@ class AddEnfermedadToPacientes extends Migration
         Schema::table('pacientes', function (Blueprint $table) {
 
             $table->unsignedInteger('enfermedad_id');
-            $table->foreign('enfermedad_id')->references('id')->on('enfermedads');
+            $table->foreign('enfermedad_id')->references('id')->on('enfermedads')->onDelete(null);
         });
     }
 
