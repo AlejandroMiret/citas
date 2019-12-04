@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cassandra\Date;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
@@ -58,8 +59,9 @@ class CitaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function store(Request $request)
     {
@@ -67,11 +69,16 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'location_id' => 'required|exists:locations,id',
-            'fecha_hora' => 'required|date|after:now',
-            'duration' => 'required|date|after:fecha_hora'
+            'fecha_hora' => 'required|date|after:now'
         ]);
 
         $cita = new Cita($request->all());
+        $cita->save();
+
+        $min15 = new \DateInterval('PT15M');
+        $fecha_inicio = new \DateTime($cita-> fecha_hora);
+        $fecha_inicio -> createFromFormat('Y-m-d\Th:i', $cita->fecha_hora);
+        $cita->duration = $fecha_inicio -> add($min15);
         $cita->save();
 
 
@@ -115,9 +122,10 @@ class CitaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function update(Request $request, $id)
     {
@@ -125,11 +133,18 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'location_id' => 'required|exists:locations,id',
-            'fecha_hora' => 'required|date|after:now',
-            'duration' => 'required|date|after:fecha_hora'
+            'fecha_hora' => 'required|date|after:now'
         ]);
         $cita = Cita::find($id);
         $cita->fill($request->all());
+
+
+
+        $min15 = new \DateInterval('PT15M');
+        $fecha_inicio = new \DateTime($cita-> fecha_hora);
+        $fecha_inicio -> createFromFormat('Y-m-d\Th:i', $cita->fecha_hora);
+        $cita->duration = $fecha_inicio -> add($min15);
+        $cita->save();
 
         $cita->save();
 
