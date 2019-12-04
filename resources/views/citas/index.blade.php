@@ -21,7 +21,7 @@
                                 <th>Medico</th>
                                 <th>Paciente</th>
                                 <th>Localización</th>
-                                <th>Duración</th>
+                                <th>Fecha de finalización</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
 

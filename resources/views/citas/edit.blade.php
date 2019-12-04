@@ -32,7 +32,7 @@
                             {!! Form::select('paciente_id', $pacientes, $cita->paciente_id, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!!Form::label('location_id', 'Location') !!}
+                            {!!Form::label('location_id', 'Localización') !!}
                             <br>
                             {!! Form::select('location_id', $locations, $cita->location_id, ['class' => 'form-control']) !!}
                         </div>
