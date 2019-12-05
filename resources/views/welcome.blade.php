@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Bienvenidos al Toyi Oasis</title>
+        <title>Bienvenidos al Troyi Oasis</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -89,8 +89,8 @@
                     <a href="http://php.net/manual/es/langref.php">PHP</a>
                     <a href="https://www.mysql.com/products/workbench/">MySQL</a>
                 </div>
-                <div style="position: absolute; bottom: 10px; background-color: white; width: 800px; color: #636b6f; font-weight: bold;" >
-                    Va por usted, PADRE
+                <div style="position: absolute; bottom: 10px; background-color: white; width: 800px; color: #636b6f;" >
+                    Va por usted, PADRE.
                 </div>
             </div>
         </div>
