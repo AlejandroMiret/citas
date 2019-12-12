@@ -23,6 +23,7 @@ class Paciente extends Model
 
     public function getFullNameAttribute()
     {
-        return $this->name .' '.$this->surname;
+        return $this->name .' '.$this->surname .'/'.$this->nuhsa;
     }
+
 }
