@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddEnfermedadToPacientes extends Migration
+class CreateMedicinasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,13 @@ class AddEnfermedadToPacientes extends Migration
     public function up()
     {
         //
-        Schema::table('pacientes', function (Blueprint $table) {
-
-            $table->unsignedInteger('enfermedad_id');
-            $table->foreign('enfermedad_id')->references('id')->on('enfermedads')->onDelete('set null');
+        Schema::create('medicinas', function (Blueprint $table){
+            $table->increments('id');
+            $table->string('name');
+            $table->string('composition');
+            $table->string('presentation');
+            $table->string('link');
+            $table->timestamps();
         });
     }
 
@@ -29,5 +32,6 @@ class AddEnfermedadToPacientes extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('medicinas');
     }
 }
