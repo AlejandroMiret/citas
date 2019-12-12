@@ -8,7 +8,7 @@ class Tratamiento extends Model
 {
     //
 
-    protected $fillable = ['fecha_inicio', 'fecha_fin', 'decripcion', 'paciente_id'];
+    protected $fillable = ['fecha_inicio', 'fecha_fin', 'descripcion', 'paciente_id'];
 
 
     public function paciente()
