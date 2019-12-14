@@ -8,8 +8,8 @@ class Medicina extends Model
 {
     protected $fillable = ['name', 'composition', 'presentation', 'link'];
 
-    public function Tratamientos()
+    public function medicaciones()
     {
-        return $this->hasMany('App\Tratamiento');
+        return $this->hasMany('App\Medicacion');
     }
 }

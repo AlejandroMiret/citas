@@ -15,4 +15,10 @@ class Tratamiento extends Model
     {
         return $this->belongsTo('App\Paciente');
     }
+
+    public function medicaciones()
+    {
+        return $this->hasMany('App\Medicacion');
+    }
+
 }

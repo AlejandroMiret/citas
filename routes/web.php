@@ -32,6 +32,8 @@ Route::resource('tratamientos', 'TratamientoController');
 
 Route::resource('medicinas', 'MedicinaController');
 
+Route::resource('medicaciones', 'MedicacionController');
+
 Route::get('citas/citasPasadas', 'CitaController@citasPasadas');
 
 
