@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Medicina;
 use App\Paciente;
 use App\Tratamiento;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class TratamientoController extends Controller
     {
         //
         $pacientes = Paciente::all()->pluck('full_name','id');
-        return view('tratamientos/create',['pacientes'=>$pacientes]);
+        $medicinas = Medicina::all()->pluck('name','id');
+        return view('tratamientos/create',['pacientes'=>$pacientes, 'medicinas'=>$medicinas]);
     }
 
     /**
@@ -48,7 +50,8 @@ class TratamientoController extends Controller
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:fecha_inicio',
             'descripcion' => 'required|max:255',
-            'paciente_id' => 'required|exists:pacientes,id',
+            'medicina_id' => 'required|exists:medicinas,id',
+            'paciente_id' => 'required|exists:pacientes,id'
         ]);
 
         $tratamiento = new Tratamiento($request->all());
@@ -83,7 +86,9 @@ class TratamientoController extends Controller
 
         $pacientes= Paciente::all()->pluck('full_name','id');
 
-        return view('tratamientos/edit',['tratamiento'=>$tratamiento, 'pacientes'=>$pacientes]);
+        $medicinas= Medicina::all()->pluck('name','id');
+
+        return view('tratamientos/edit',['tratamiento'=>$tratamiento,'medicinas'=>$medicinas ,'pacientes'=>$pacientes]);
     }
 
     /**
@@ -101,7 +106,8 @@ class TratamientoController extends Controller
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:fecha_inicio',
             'descripcion' => 'required|max:255',
-            'paciente_id' => 'required|exists:pacientes,id',
+            'medicina_id' => 'required|exists:medicinas,id',
+            'paciente_id' => 'required|exists:pacientes,id'
         ]);
         $tratamiento = Tratamiento::find($id);
         $tratamiento->fill($request->all());

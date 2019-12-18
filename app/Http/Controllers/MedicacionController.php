@@ -53,6 +53,8 @@ class MedicacionController extends Controller
         'unidades'=>'required|max:2',
         'frecuencia' => 'required|max:175',
         'instrucciones' => 'required|max:800',
+        'fecha_inicio' => 'required|date|after:now',
+        'fecha_fin' => 'required|date|after:fecha_inicio',
         'tratamiento_id' => 'required|exists:tratamientos,id',
         'medicina_id' => 'required|exists:medicinas,id'
 
@@ -107,6 +109,8 @@ class MedicacionController extends Controller
             'unidades'=>'required|max:2',
             'frecuencia' => 'required|max:175',
             'instrucciones' => 'required|max:800',
+            'fecha_inicio' => 'required|date|after:now',
+            'fecha_fin' => 'required|date|after:fecha_inicio',
             'tratamiento_id' => 'required|exists:tratamientos,id',
             'medicina_id' => 'required|exists:medicinas,id'
 

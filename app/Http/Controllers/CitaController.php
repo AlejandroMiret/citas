@@ -34,6 +34,7 @@ class CitaController extends Controller
 
     public function citasPasadas()
     {
+        //Para poner la máquina virtual en el horario actual: https://robjmills.co.uk/2016/04/25/setting-server-time-in-vagrant.html
         $citas = Cita::all()->where('fecha_hora','<',Carbon::now());
 
         return view('citas/citasPasadas',['citas'=>$citas]);

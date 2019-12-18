@@ -19,6 +19,8 @@ class CreateMedicacionsTable extends Migration
             $table->integer('unidades');
             $table->string('frecuencia');
             $table->string('instrucciones');
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_fin');
             $table->unsignedInteger('medicina_id');
             $table->unsignedInteger('tratamiento_id');
             $table->timestamps();

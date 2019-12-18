@@ -8,7 +8,7 @@ class Tratamiento extends Model
 {
     //
 
-    protected $fillable = ['fecha_inicio', 'fecha_fin', 'descripcion', 'paciente_id'];
+    protected $fillable = ['fecha_inicio', 'fecha_fin', 'descripcion','medicina_id', 'paciente_id'];
 
 
     public function paciente()
@@ -19,6 +19,11 @@ class Tratamiento extends Model
     public function medicaciones()
     {
         return $this->hasMany('App\Medicacion');
+    }
+
+    public function medicina()
+    {
+        return $this->belongsTo('App\Medicina');
     }
 
 }

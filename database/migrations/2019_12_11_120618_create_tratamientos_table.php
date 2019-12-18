@@ -19,10 +19,12 @@ class CreateTratamientosTable extends Migration
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
             $table->string('descripcion');
+            $table->unsignedInteger('medicina_id');
             $table->unsignedInteger('paciente_id');
             $table->timestamps();
 
             $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->foreign('medicina_id')->references('id')->on('medicinas');
         });
     }
 

@@ -16,6 +16,8 @@
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>
+                                <th>Fecha inicio</th>
+                                <th>Fecha fin</th>
                                 <th>Unidad/es</th>
                                 <th>Frecuencia</th>
                                 <th>Instrucciones</th>
@@ -28,6 +30,8 @@
 
 
                                 <tr>
+                                    <td>{{ $medicacion->fecha_inicio }}</td>
+                                    <td>{{ $medicacion->fecha_fin }}</td>
                                     <td>{{ $medicacion->unidades }}</td>
                                     <td>{{ $medicacion->frecuencia  }}</td>
                                     <td>{{ $medicacion->instrucciones  }}</td>

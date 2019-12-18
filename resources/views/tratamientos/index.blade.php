@@ -17,6 +17,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Paciente</th>
+                                <th>Medicamento</th>
                                 <th>Descripcion</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
@@ -28,6 +29,7 @@
 
                                 <tr>
                                     <td>{{ $tratamiento->paciente->full_name  }}</td>
+                                    <td>{{ $tratamiento->medicina->name  }}</td>
                                     <td>{{ $tratamiento->descripcion }}</td>
                                     <td>{{ $tratamiento->fecha_inicio }}</td>
                                     <td>{{ $tratamiento->fecha_fin }}</td>

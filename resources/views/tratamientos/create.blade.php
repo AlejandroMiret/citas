@@ -18,6 +18,11 @@
                             {!! Form::select('paciente_id', $pacientes, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
+                            {!!Form::label('medicina_id', 'Medicamento') !!}
+                            <br>
+                            {!! Form::select('medicina_id', $medicinas, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('descripcion', 'Descripcion del tratamiento') !!}
                             {!! Form::text('descripcion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
