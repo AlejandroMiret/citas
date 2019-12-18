@@ -8,12 +8,15 @@
                     <div class="panel-heading">Pacientes</div>
 
                     <div class="panel-body">
+
                         @include('flash::message')
                         {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
+
                         <br><br>
+
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Nombre</th>
@@ -21,7 +24,7 @@
                                 <th>Nuhsa</th>
                                 <th>Enfermedad</th>
 
-                                <th colspan="2">Acciones</th>
+                                <th colspan="3">Acciones</th>
                             </tr>
 
                             @foreach ($pacientes as $paciente)
@@ -40,6 +43,12 @@
                                     <td>
                                         {!! Form::open(['route' => ['pacientes.destroy',$paciente->id], 'method' => 'delete']) !!}
                                         {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
+                                        {!! Form::close() !!}
+
+                                    </td>
+                                    <td>
+                                        {!! Form::open(['route' => ['pacientes.indexCitasPorPaciente',$paciente->id], 'method' => 'get']) !!}
+                                        {!!   Form::submit('Ver citas del paciente', ['class'=> 'btn btn-primary'])!!}
                                         {!! Form::close() !!}
 
                                     </td>

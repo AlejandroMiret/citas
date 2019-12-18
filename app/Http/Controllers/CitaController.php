@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Cassandra\Date;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
 use App\Location;
-
+use mysql_xdevapi\Table;
 
 
 class CitaController extends Controller
@@ -27,14 +27,14 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $citas = Cita::all();
+        $citas = Cita::all()->where('fecha_hora','>',Carbon::now());
 
         return view('citas/index',['citas'=>$citas]);
     }
 
     public function citasPasadas()
     {
-        $citas = Cita::all();
+        $citas = Cita::all()->where('fecha_hora','<',Carbon::now());
 
         return view('citas/citasPasadas',['citas'=>$citas]);
     }
@@ -44,6 +44,13 @@ class CitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function CitasPorPaciente($id)
+    {
+        $citas=Cita::all()->where('paciente_id','=',$id);
+
+
+        return view('pacientes/indexCitasPorPaciente',['citas'=>$citas]);
+    }
     public function create()
     {
         $medicos = Medico::all()->pluck('full_name','id');
@@ -69,7 +76,7 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'location_id' => 'required|exists:locations,id',
-            'fecha_hora' => 'required|date|after:now'
+            'fecha_hora' => 'required|date'
         ]);
 
         $cita = new Cita($request->all());

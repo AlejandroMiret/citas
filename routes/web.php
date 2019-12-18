@@ -20,9 +20,15 @@ Route::delete('especialidades/destroyAll', 'EspecialidadController@destroyAll')-
 Route::resource('especialidades', 'EspecialidadController');
 
 Route::resource('medicos', 'MedicoController');
+
+Route::get('pacientes/indexCitasPorPaciente/{id}', 'CitaController@CitasPorPaciente')->name('pacientes.indexCitasPorPaciente');
+//Route::get('pacientes/indexCitasPorPaciente', 'CitaController@CitasPorPaciente')->name('pacientes.indexCitasPorPaciente');
+
 Route::resource('pacientes', 'PacienteController');
 
 Route::resource('locations', 'LocationController');
+
+Route::get('citas/citasPasadas', 'CitaController@citasPasadas')->name('citas.citasPasadas');
 
 Route::resource('citas', 'CitaController');
 
@@ -34,7 +40,6 @@ Route::resource('medicinas', 'MedicinaController');
 
 Route::resource('medicaciones', 'MedicacionController');
 
-Route::get('citas/citasPasadas', 'CitaController@citasPasadas');
 
 
 

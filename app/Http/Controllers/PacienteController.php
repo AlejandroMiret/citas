@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enfermedad;
+use App\Especialidad;
 use Illuminate\Http\Request;
 use App\Paciente;
 
@@ -20,10 +21,7 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        //
-
         $pacientes = Paciente::all();
-
         return view('pacientes/index',['pacientes'=>$pacientes]);
     }
 
@@ -50,11 +48,14 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
 
+
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'nuhsa' => 'required|nuhsa|max:255',
-            'enfermedad_id' => 'required|exists:enfermedads,id'
+            'enfermedad_id' => 'required|exists:enfermedads,id',
+
         ]);
 
         $paciente = new Paciente($request->all());
@@ -101,11 +102,14 @@ class PacienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'nuhsa' => 'required|nuhsa|max:255',
-            'enfermedad_id' => 'required|exists:enfermedads,id'
+            'enfermedad_id' => 'required|exists:enfermedads,id',
+
         ]);
 
         $paciente = Paciente::find($id);
@@ -134,4 +138,6 @@ class PacienteController extends Controller
 
         return redirect()->route('pacientes.index');
     }
+
+
 }

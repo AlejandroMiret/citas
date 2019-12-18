@@ -8,13 +8,20 @@
                     <div class="panel-heading">Citas</div>
 
                     <div class="panel-body">
+
                         @include('flash::message')
                         {!! Form::open(['route' => 'citas.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear cita', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
                         <br><br>
-                        {{-- Aquí se añadería el botón para ver citas pasadas, pero me da error con la ruta si lo pongo--}}
+
+                        {!! Form::open(['route' => 'citas.citasPasadas', 'method' => 'get']) !!}
+                        {!!   Form::submit('Ver citas pasadas', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::close() !!}
+                        <br><br>
+
+
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Fecha</th>

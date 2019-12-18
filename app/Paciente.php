@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Paciente extends Model
 {
     //
-    protected $fillable = ['name', 'surname', 'nuhsa', 'enfermedad_id'];
+    protected $fillable = ['name', 'surname', 'nuhsa', 'enfermedad_id',];
 
 
     public function enfermedad()
@@ -19,6 +19,8 @@ class Paciente extends Model
     {
         return $this->hasMany('App\Cita');
     }
+
+
 
 
     public function getFullNameAttribute()
