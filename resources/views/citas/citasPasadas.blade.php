@@ -22,6 +22,7 @@
                                 <th>Medico</th>
                                 <th>Paciente</th>
                                 <th>Localización</th>
+                                <th colspan="1">Acciones</th>
 
                             </tr>
 
@@ -32,6 +33,13 @@
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
                                     <td>{{ $cita->location->full_name}}</td>
+
+                                    <td>
+                                        {!! Form::open(['route' => ['citas.destroy',$cita->id], 'method' => 'delete']) !!}
+                                        {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
+                                        {!! Form::close() !!}
+
+                                    </td>
 
                                 </tr>
 
