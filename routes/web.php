@@ -22,7 +22,8 @@ Route::resource('especialidades', 'EspecialidadController');
 Route::resource('medicos', 'MedicoController');
 
 Route::get('pacientes/indexCitasPorPaciente/{id}', 'CitaController@CitasPorPaciente')->name('pacientes.indexCitasPorPaciente');
-//Route::get('pacientes/indexCitasPorPaciente', 'CitaController@CitasPorPaciente')->name('pacientes.indexCitasPorPaciente');
+
+Route::get('pacientes/pacientePorEspecialidad', 'PacienteController@pacientePorEspecialidad')->name('pacientes.pacientePorEspecialidad');
 
 Route::resource('pacientes', 'PacienteController');
 

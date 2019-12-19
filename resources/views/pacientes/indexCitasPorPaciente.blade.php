@@ -5,9 +5,14 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Citas Por Paciente</div>
+                    <div class="panel-heading">Citas por paciente</div>
 
                     <div class="panel-body">
+                        {!! Form::open(['route' => 'pacientes.index', 'method' => 'get']) !!}
+                        {!!   Form::submit('Todos los pacientes', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::close() !!}
+
+                        <br><br>
 
                         <table class="table table-striped table-bordered">
                             <tr>
