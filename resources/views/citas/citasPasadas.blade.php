@@ -6,9 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Citas pasadas</div>
-                    {{-- Esto se supone que es como el index, pero como el index no funciona, si le paso la ruta show o citasPasadas que he
-                    creado en el controlador de citas tampoco funciona, por eso no se donde está el error de que la ruta no existe. de si es
-                    del controlador o si es del botón al crearlo en el index para que me lleve a citas pasadas--}}
+
                     <div class="panel-body">
                         {!! Form::open(['route' => 'citas.index', 'method' => 'get']) !!}
                         {!!   Form::submit('Ver citas futuras', ['class'=> 'btn btn-primary'])!!}
